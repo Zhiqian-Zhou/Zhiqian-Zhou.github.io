@@ -22,7 +22,7 @@ const hobbies = [
     name: 'Eating',
     icon: 'fa-utensils',
     color: 'amber',
-    blurb: 'Self-declared food critic — extra spicy, please.'
+    blurb: 'Self-declared food critic — chocolate above all else.'
   },
   {
     name: 'Travelling',
