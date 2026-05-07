@@ -74,15 +74,6 @@ const onLeave = () => (tiltStyle.value = '')
               :onerror="fallback"
             />
           </div>
-          <!-- Floating badge -->
-          <div
-            class="now-badge absolute -bottom-2 -right-2 z-20 bg-white rounded-full px-3 py-1.5 shadow-lg shadow-primary/20 border border-slate-100 flex items-center gap-1.5"
-          >
-            <span class="text-base">🇪🇸</span>
-            <span class="text-[10px] font-bold text-slate-700 uppercase tracking-wider">
-              Barcelona
-            </span>
-          </div>
         </div>
       </div>
 
