@@ -30,10 +30,11 @@ const handleScroll = () => {
   scrollPercent.value = docHeight > 0 ? (scrollY / docHeight) * 100 : 0
   showScrollTop.value = scrollY > 600
 
+  // Highlight the last section whose top we've scrolled past (with a 200px head-start).
+  // This keeps the bottom-most section active when the user reaches the footer.
   let current = ''
   document.querySelectorAll('section[id]').forEach((section) => {
-    const top = section.offsetTop - 150
-    if (scrollY > top && scrollY <= top + section.offsetHeight) {
+    if (scrollY + 200 >= section.offsetTop) {
       current = section.getAttribute('id')
     }
   })
