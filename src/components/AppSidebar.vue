@@ -170,13 +170,6 @@ const onNav = () => emit('navigate')
           >
             <i class="fas fa-envelope text-primary"></i>
           </a>
-          <span
-            class="dock-btn tip cursor-default"
-            data-tip="Barcelona, Spain"
-            aria-label="Location"
-          >
-            <i class="fas fa-map-marker-alt text-rose-500"></i>
-          </span>
           <a
             href="https://www.linkedin.com/in/zhiqian-zhou-196350300/"
             target="_blank"
