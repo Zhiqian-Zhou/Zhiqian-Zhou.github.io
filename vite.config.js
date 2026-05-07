@@ -3,9 +3,10 @@ import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
-// Deploys at https://zhiqian-zhou.github.io/ (user page — repo name must be
-// `Zhiqian-Zhou.github.io`). Override with VITE_BASE for other repo names.
-const base = process.env.VITE_BASE ?? '/'
+// Project page at https://zhiqian-zhou.github.io/Zhiqian-Zhou/.
+// To switch to a user page at https://zhiqian-zhou.github.io/, first rename the
+// GitHub repo to `Zhiqian-Zhou.github.io`, then run `VITE_BASE=/ npm run deploy`.
+const base = process.env.VITE_BASE ?? '/Zhiqian-Zhou/'
 
 export default defineConfig({
   base,
