@@ -170,14 +170,6 @@ const onNav = () => emit('navigate')
           >
             <i class="fas fa-envelope text-primary"></i>
           </a>
-          <a
-            href="tel:"
-            class="dock-btn tip"
-            data-tip=""
-            aria-label="Phone"
-          >
-            <i class="fas fa-phone text-emerald-500"></i>
-          </a>
           <span
             class="dock-btn tip cursor-default"
             data-tip="Barcelona, Spain"
