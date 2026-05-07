@@ -9,6 +9,7 @@ import PublicationsSection from './components/PublicationsSection.vue'
 import SkillsSection from './components/SkillsSection.vue'
 import AwardsSection from './components/AwardsSection.vue'
 import LeadershipSection from './components/LeadershipSection.vue'
+import HobbiesSection from './components/HobbiesSection.vue'
 import AppFooter from './components/AppFooter.vue'
 
 const activeSection = ref('home')
@@ -141,8 +142,10 @@ onUnmounted(() => {
       </button>
     </Transition>
 
-    <!-- Main scroll area -->
-    <main class="lg:ml-44 xl:ml-56 2xl:ml-64 min-h-screen w-full relative">
+    <!-- Main scroll area. At 2xl, equal margins center the content on the viewport. -->
+    <main
+      class="lg:ml-44 xl:ml-56 2xl:ml-64 2xl:mr-64 min-h-screen w-full relative"
+    >
       <HeroSection />
       <AboutSection />
       <ExperienceSection />
@@ -151,6 +154,7 @@ onUnmounted(() => {
       <SkillsSection />
       <AwardsSection />
       <LeadershipSection />
+      <HobbiesSection />
       <AppFooter />
     </main>
   </div>

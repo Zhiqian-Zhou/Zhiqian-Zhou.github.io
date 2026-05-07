@@ -1,6 +1,4 @@
 <script setup>
-import { onMounted, onUnmounted, ref } from 'vue'
-
 defineProps({
   activeSection: { type: String, default: 'home' },
   open: { type: Boolean, default: false }
@@ -16,38 +14,18 @@ const navItems = [
   { id: 'publications', label: 'Research', icon: 'fa-book-open' },
   { id: 'skills', label: 'Skills', icon: 'fa-tools' },
   { id: 'awards', label: 'Awards', icon: 'fa-trophy' },
-  { id: 'leadership', label: 'Leadership', icon: 'fa-users' }
+  { id: 'leadership', label: 'Leadership', icon: 'fa-users' },
+  { id: 'hobbies', label: 'Hobbies', icon: 'fa-heart' }
 ]
 
 const languages = [
-  { name: 'Chinese', level: 'Native', highlight: true },
-  { name: 'Spanish', level: 'Bilingual' },
-  { name: 'Catalan', level: 'Bilingual' },
-  { name: 'English', level: 'Professional' }
+  { code: 'CN', name: 'Chinese', level: 'Native', highlight: true },
+  { code: 'ES', name: 'Spanish', level: 'Bilingual' },
+  { code: 'CA', name: 'Catalan', level: 'Bilingual' },
+  { code: 'EN', name: 'English', level: 'Pro' }
 ]
 
 const onNav = () => emit('navigate')
-
-const langOpen = ref(false)
-const langRef = ref(null)
-
-const onClickOutside = (e) => {
-  if (langOpen.value && langRef.value && !langRef.value.contains(e.target)) {
-    langOpen.value = false
-  }
-}
-const onEsc = (e) => {
-  if (e.key === 'Escape') langOpen.value = false
-}
-
-onMounted(() => {
-  document.addEventListener('click', onClickOutside)
-  document.addEventListener('keydown', onEsc)
-})
-onUnmounted(() => {
-  document.removeEventListener('click', onClickOutside)
-  document.removeEventListener('keydown', onEsc)
-})
 </script>
 
 <template>
@@ -57,7 +35,7 @@ onUnmounted(() => {
     :class="open ? 'translate-x-0 shadow-2xl shadow-primary/10' : '-translate-x-full'"
   >
     <div class="sidebar-grid h-full">
-      <!-- TOP: brand -->
+      <!-- TOP: brand + status pip -->
       <header class="flex items-center justify-between px-4 py-4">
         <a
           href="#home"
@@ -76,9 +54,9 @@ onUnmounted(() => {
         </button>
       </header>
 
-      <!-- MIDDLE: navigation, distributes vertical space -->
+      <!-- NAV: tight at top, doesn't stretch -->
       <nav
-        class="min-h-0 px-3 flex flex-col justify-evenly gap-fluid-nav-gap py-2"
+        class="px-3 flex flex-col gap-fluid-nav-gap py-1"
         aria-label="Page sections"
       >
         <a
@@ -95,11 +73,95 @@ onUnmounted(() => {
         </a>
       </nav>
 
-      <!-- BOTTOM: compact icon dock -->
+      <!-- SPOTLIGHT: fills remaining vertical space; auto-hidden when too short -->
+      <div class="spotlight-zone min-h-0 px-3 pt-3 pb-2 flex flex-col justify-end">
+        <section class="spotlight-card hidden mb-2">
+          <div class="spotlight-glow rounded-2xl p-4 relative overflow-hidden">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="relative flex h-2 w-2">
+                <span
+                  class="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping"
+                ></span>
+                <span
+                  class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"
+                ></span>
+              </span>
+              <span
+                class="text-[10px] font-bold uppercase tracking-[0.15em] text-emerald-600"
+                >Available</span
+              >
+            </div>
+            <p class="text-xs text-slate-700 leading-snug font-medium">
+              Final-year AI student, open to research and engineering
+              opportunities.
+            </p>
+            <div
+              class="mt-3 pt-3 border-t border-slate-200/70 flex items-center gap-2"
+            >
+              <div
+                class="w-6 h-6 rounded-md bg-primary/10 flex items-center justify-center shrink-0"
+              >
+                <i class="fas fa-hammer text-[10px] text-primary"></i>
+              </div>
+              <div class="min-w-0">
+                <p class="text-[9px] uppercase tracking-wider text-slate-500 font-semibold">
+                  Building
+                </p>
+                <p class="text-[11px] text-slate-700 font-semibold truncate">
+                  HomeCraft thesis
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <a
+            href="#projects"
+            @click="onNav"
+            class="mt-3 group flex items-center justify-between px-3 py-2 rounded-lg bg-slate-900 text-white text-[11px] font-medium hover:bg-slate-800 transition-colors"
+          >
+            <span>See latest work</span>
+            <i
+              class="fas fa-arrow-right text-[10px] transition-transform group-hover:translate-x-1"
+            ></i>
+          </a>
+        </section>
+      </div>
+
+      <!-- BOTTOM: languages strip + compact icon dock -->
       <footer
         class="px-3 pb-3 pt-2 border-t border-slate-200/80 flex flex-col gap-2"
       >
-        <div class="flex items-center justify-around gap-1">
+        <!-- Always-visible language pills -->
+        <div class="flex items-center justify-between mb-1">
+          <h4
+            class="text-[9px] font-bold text-slate-500 uppercase tracking-[0.15em]"
+          >
+            Languages
+          </h4>
+        </div>
+        <div class="grid grid-cols-2 gap-1">
+          <span
+            v-for="l in languages"
+            :key="l.code"
+            class="lang-pill flex items-center justify-between px-2 py-1 rounded-md text-[10px] font-medium"
+            :class="
+              l.highlight
+                ? 'bg-primary/10 text-primary'
+                : 'bg-slate-100 text-slate-700'
+            "
+            :title="`${l.name} — ${l.level}`"
+          >
+            <span class="font-mono font-bold">{{ l.code }}</span>
+            <span
+              class="text-[9px] opacity-80"
+              :class="l.highlight ? 'font-bold' : ''"
+              >{{ l.level }}</span
+            >
+          </span>
+        </div>
+
+        <!-- Contact + social dock -->
+        <div class="flex items-center justify-around gap-1 mt-2">
           <a
             href="mailto:zhiqianzhou12@gmail.com"
             class="dock-btn tip"
@@ -143,53 +205,6 @@ onUnmounted(() => {
           >
             <i class="fab fa-github"></i>
           </a>
-
-          <!-- Languages popover -->
-          <div ref="langRef" class="relative">
-            <button
-              type="button"
-              @click.stop="langOpen = !langOpen"
-              class="dock-btn tip"
-              :class="{ '!bg-primary/10 !text-primary': langOpen }"
-              :data-tip="langOpen ? '' : 'Languages'"
-              :aria-expanded="langOpen"
-              aria-label="Languages"
-            >
-              <i class="fas fa-language"></i>
-            </button>
-            <Transition name="lang-pop">
-              <div
-                v-if="langOpen"
-                class="lang-pop absolute bottom-full mb-3 right-0 lg:left-1/2 lg:-translate-x-1/2 lg:right-auto z-50 w-44 bg-white border border-slate-200 rounded-xl shadow-2xl shadow-slate-300/40 p-3"
-                role="dialog"
-                aria-label="Languages list"
-              >
-                <h4
-                  class="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-2"
-                >
-                  Languages
-                </h4>
-                <ul class="space-y-1.5">
-                  <li
-                    v-for="lang in languages"
-                    :key="lang.name"
-                    class="flex justify-between items-center text-xs"
-                  >
-                    <span class="text-slate-700 font-medium">{{ lang.name }}</span>
-                    <span
-                      class="py-0.5 px-1.5 rounded text-[10px] font-medium"
-                      :class="
-                        lang.highlight
-                          ? 'bg-primary/10 text-primary font-bold'
-                          : 'bg-slate-100 text-slate-600'
-                      "
-                      >{{ lang.level }}</span
-                    >
-                  </li>
-                </ul>
-              </div>
-            </Transition>
-          </div>
         </div>
       </footer>
     </div>
@@ -197,17 +212,17 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
-/* Layout backbone — three zones, middle absorbs slack, never overflows */
+/* Layout backbone — header / nav / spotlight (1fr) / footer */
 .sidebar-shell {
   height: 100dvh;
   min-height: 100svh;
 }
 .sidebar-grid {
   display: grid;
-  grid-template-rows: auto minmax(0, 1fr) auto;
+  grid-template-rows: auto auto minmax(0, 1fr) auto;
 }
 
-/* Fluid typography — scales with viewport height */
+/* Fluid typography — scales gently with viewport height */
 .text-fluid-brand {
   font-size: clamp(1rem, 2.4vh, 1.4rem);
 }
@@ -221,13 +236,59 @@ onUnmounted(() => {
   gap: clamp(0.05rem, 0.4vh, 0.4rem);
 }
 .py-fluid-nav-py {
-  padding-top: clamp(0.35rem, 0.9vh, 0.7rem);
-  padding-bottom: clamp(0.35rem, 0.9vh, 0.7rem);
+  padding-top: clamp(0.4rem, 1vh, 0.7rem);
+  padding-bottom: clamp(0.4rem, 1vh, 0.7rem);
 }
 
-/* Hide brand close-button gap on lg, brand only */
-header { padding-top: clamp(0.6rem, 1.8vh, 1.2rem); padding-bottom: clamp(0.6rem, 1.6vh, 1rem); }
-footer { padding-top: clamp(0.4rem, 1vh, 0.7rem); padding-bottom: clamp(0.5rem, 1.2vh, 0.85rem); }
+header {
+  padding-top: clamp(0.6rem, 1.8vh, 1.2rem);
+  padding-bottom: clamp(0.6rem, 1.6vh, 1rem);
+}
+footer {
+  padding-top: clamp(0.4rem, 1vh, 0.7rem);
+  padding-bottom: clamp(0.5rem, 1.2vh, 0.85rem);
+}
+
+/* Spotlight — show only when there's enough vertical room */
+@media (min-height: 760px) {
+  .spotlight-card {
+    display: block;
+    animation: spotlight-in 0.6s cubic-bezier(0.32, 0.72, 0, 1) 0.4s both;
+  }
+}
+
+.spotlight-glow {
+  background: linear-gradient(
+    135deg,
+    rgba(14, 165, 233, 0.06) 0%,
+    rgba(99, 102, 241, 0.08) 100%
+  );
+  border: 1px solid rgba(14, 165, 233, 0.18);
+  position: relative;
+}
+.spotlight-glow::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 1rem;
+  background: radial-gradient(
+    circle at top right,
+    rgba(99, 102, 241, 0.15),
+    transparent 50%
+  );
+  pointer-events: none;
+}
+
+@keyframes spotlight-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 /* Dock buttons */
 .dock-btn {
@@ -249,9 +310,13 @@ footer { padding-top: clamp(0.4rem, 1vh, 0.7rem); padding-bottom: clamp(0.5rem, 
 }
 
 /* CSS-only tooltips */
-.tip { position: relative; }
+.tip {
+  position: relative;
+}
 .tip[data-tip='']::after,
-.tip[data-tip='']::before { display: none; }
+.tip[data-tip='']::before {
+  display: none;
+}
 .tip::after {
   content: attr(data-tip);
   position: absolute;
@@ -299,11 +364,17 @@ footer { padding-top: clamp(0.4rem, 1vh, 0.7rem); padding-bottom: clamp(0.5rem, 
   animation-delay: var(--nav-delay, 0ms);
 }
 @keyframes nav-slide-in {
-  from { opacity: 0; transform: translateX(-12px); }
-  to { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
-/* Languages popover transition */
+/* Languages popover */
 .lang-pop-enter-active,
 .lang-pop-leave-active {
   transition: opacity 0.22s ease, transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
