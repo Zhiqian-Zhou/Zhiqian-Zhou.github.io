@@ -23,21 +23,21 @@ const work = [
 
 const education = [
   {
-    title: 'Exchange Student in AI',
-    period: 'Sept 2025 – Jan 2026',
-    org: 'Beihang University, Beijing',
-    icon: 'fa-globe-asia',
-    filled: true,
-    body: `<strong class="text-slate-800">GPA: 96/100.</strong> Core courses in Foundation Models, Intelligent Security, Medical Image Computing.`,
-    sub: `Benchmarked ResNet50 vs DeiT-Small on HAM10000 dataset, implemented multimodal fusion for fetal ultrasound analysis, and tested adversarial attacks (FGSM, PGD) to measure robustness degradation.`
-  },
-  {
     title: 'B.S. in Artificial Intelligence',
     period: 'Sept 2022 – Jun 2026',
     org: 'UPC BarcelonaTech',
     icon: 'fa-graduation-cap',
-    filled: false,
+    filled: true,
     body: `<strong class="text-slate-800">GPA: 8.94/10.</strong> Distinctions (Top 5%) in High Performance Computing, Speech/Dialogue Processing, Knowledge/Automated Reasoning, Systems Modeling, and Calculus.`
+  },
+  {
+    title: 'Exchange Student in AI',
+    period: 'Sept 2025 – Jan 2026',
+    org: 'Beihang University, Beijing',
+    icon: 'fa-globe-asia',
+    filled: false,
+    body: `<strong class="text-slate-800">GPA: 96/100.</strong> Core courses in Foundation Models, Intelligent Security, Medical Image Computing.`,
+    sub: `Benchmarked ResNet50 vs DeiT-Small on HAM10000 dataset, implemented multimodal fusion for fetal ultrasound analysis, and tested adversarial attacks (FGSM, PGD) to measure robustness degradation.`
   }
 ]
 
@@ -118,23 +118,23 @@ const groups = [
               <i :class="['fas', item.icon, 'text-slate-400']"></i> {{ item.org }}
             </p>
 
-            <ul
-              v-if="item.bullets"
-              class="list-disc list-outside ml-4 text-slate-600 space-y-2"
-            >
-              <li v-for="(b, i) in item.bullets" :key="i">{{ b }}</li>
-            </ul>
-
             <div
-              v-else
               class="glass p-5 rounded-xl border border-slate-200 bg-white/60"
             >
-              <p
-                class="text-slate-600 leading-relaxed"
-                :class="{ 'mb-3': item.sub }"
-                v-html="item.body"
-              ></p>
-              <p v-if="item.sub" class="text-slate-600 text-sm">{{ item.sub }}</p>
+              <ul
+                v-if="item.bullets"
+                class="list-disc list-outside ml-5 text-slate-600 space-y-2 leading-relaxed"
+              >
+                <li v-for="(b, i) in item.bullets" :key="i">{{ b }}</li>
+              </ul>
+              <template v-else>
+                <p
+                  class="text-slate-600 leading-relaxed"
+                  :class="{ 'mb-3': item.sub }"
+                  v-html="item.body"
+                ></p>
+                <p v-if="item.sub" class="text-slate-600 text-sm">{{ item.sub }}</p>
+              </template>
             </div>
           </div>
         </div>
