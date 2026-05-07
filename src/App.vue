@@ -142,10 +142,9 @@ onUnmounted(() => {
       </button>
     </Transition>
 
-    <!-- Main scroll area. At 2xl, equal margins center the content on the viewport. -->
-    <main
-      class="lg:ml-44 xl:ml-56 2xl:ml-64 2xl:mr-64 min-h-screen w-full relative"
-    >
+    <!-- Main scroll area. At 2xl, equal margins center the content on the viewport.
+         Note: no `w-full` — that would conflict with mr-* and overflow the viewport. -->
+    <main class="lg:ml-44 xl:ml-56 2xl:ml-64 2xl:mr-64 min-h-screen relative">
       <HeroSection />
       <AboutSection />
       <ExperienceSection />

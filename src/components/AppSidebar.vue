@@ -31,7 +31,7 @@ const onNav = () => emit('navigate')
 <template>
   <aside
     id="sidebar"
-    class="fixed top-0 left-0 z-40 glass border-r border-slate-200 w-72 max-w-[82vw] lg:w-44 xl:w-56 2xl:w-64 transform transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] lg:translate-x-0 sidebar-shell"
+    class="fixed top-0 left-0 z-40 sidebar-panel border-r border-slate-200 w-72 max-w-[82vw] lg:w-44 xl:w-56 2xl:w-64 transform transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] lg:translate-x-0 sidebar-shell"
     :class="open ? 'translate-x-0 shadow-2xl shadow-primary/10' : '-translate-x-full'"
   >
     <div class="sidebar-grid h-full">
@@ -216,6 +216,12 @@ const onNav = () => emit('navigate')
 .sidebar-shell {
   height: 100dvh;
   min-height: 100svh;
+}
+
+/* Solid split-screen panel (no longer glassy/transparent) */
+.sidebar-panel {
+  background: #ffffff;
+  box-shadow: 1px 0 0 rgba(15, 23, 42, 0.04), 4px 0 24px -8px rgba(15, 23, 42, 0.06);
 }
 .sidebar-grid {
   display: grid;
