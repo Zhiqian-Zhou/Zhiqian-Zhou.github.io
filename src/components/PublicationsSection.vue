@@ -6,7 +6,7 @@ const papers = [
     title: 'Bridging Disruptions: AI-Driven Coordination Across Air and Rail Networks',
     authorsHtml:
       'I. Stroumpou, P. Mrazovic, M. Nadal Par, H. Chen, <strong class="text-slate-900">Z. Zhou</strong>, J. L. Larriba-Pey.',
-    affiliation: 'UPC & Sparsity',
+    affiliation: 'Transport Research Arena',
     affilIcon: 'fa-university',
     color: 'primary'
   },
