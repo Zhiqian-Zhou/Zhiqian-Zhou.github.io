@@ -73,58 +73,31 @@ const onNav = () => emit('navigate')
         </a>
       </nav>
 
-      <!-- SPOTLIGHT: fills remaining vertical space; auto-hidden when too short -->
+      <!-- SPOTLIGHT: a single "reach out" CTA; hidden on very short viewports -->
       <div class="spotlight-zone min-h-0 px-3 pt-3 pb-2 flex flex-col justify-end">
-        <section class="spotlight-card hidden mb-2">
-          <div class="spotlight-glow rounded-2xl p-4 relative overflow-hidden">
-            <div class="flex items-center gap-2 mb-2">
-              <span class="relative flex h-2 w-2">
-                <span
-                  class="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping"
-                ></span>
-                <span
-                  class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"
-                ></span>
-              </span>
-              <span
-                class="text-[10px] font-bold uppercase tracking-[0.15em] text-emerald-600"
-                >Available</span
-              >
-            </div>
-            <p class="text-xs text-slate-700 leading-snug font-medium">
-              Final-year AI student, open to research and engineering
-              opportunities.
-            </p>
-            <div
-              class="mt-3 pt-3 border-t border-slate-200/70 flex items-center gap-2"
-            >
-              <div
-                class="w-6 h-6 rounded-md bg-primary/10 flex items-center justify-center shrink-0"
-              >
-                <i class="fas fa-hammer text-[10px] text-primary"></i>
-              </div>
-              <div class="min-w-0">
-                <p class="text-[9px] uppercase tracking-wider text-slate-500 font-semibold">
-                  Building
-                </p>
-                <p class="text-[11px] text-slate-700 font-semibold truncate">
-                  HomeCraft thesis
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <a
-            href="#projects"
-            @click="onNav"
-            class="mt-3 group flex items-center justify-between px-3 py-2 rounded-lg bg-slate-900 text-white text-[11px] font-medium hover:bg-slate-800 transition-colors"
+        <a
+          href="mailto:zhiqianzhou12@gmail.com"
+          class="reach-cta hidden group relative overflow-hidden rounded-2xl px-4 py-3 flex items-center gap-3 text-white shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 hover:-translate-y-0.5 transition-all"
+        >
+          <span
+            class="w-9 h-9 shrink-0 rounded-xl bg-white/20 flex items-center justify-center"
           >
-            <span>See latest work</span>
-            <i
-              class="fas fa-arrow-right text-[10px] transition-transform group-hover:translate-x-1"
-            ></i>
-          </a>
-        </section>
+            <i class="fas fa-paper-plane text-sm"></i>
+          </span>
+          <span class="flex-1 min-w-0">
+            <span
+              class="block text-[9px] font-bold uppercase tracking-[0.15em] opacity-80"
+            >
+              Let's talk
+            </span>
+            <span class="block text-[12px] font-semibold truncate">
+              Reach out via email
+            </span>
+          </span>
+          <i
+            class="fas fa-arrow-right text-[10px] opacity-70 transition-transform group-hover:translate-x-1"
+          ></i>
+        </a>
       </div>
 
       <!-- BOTTOM: languages strip + compact icon dock -->
@@ -241,33 +214,22 @@ footer {
 }
 
 /* Spotlight — show only when there's enough vertical room */
-@media (min-height: 760px) {
-  .spotlight-card {
-    display: block;
+@media (min-height: 700px) {
+  .reach-cta {
+    display: flex;
     animation: spotlight-in 0.6s cubic-bezier(0.32, 0.72, 0, 1) 0.4s both;
   }
 }
 
-.spotlight-glow {
-  background: linear-gradient(
-    135deg,
-    rgba(14, 165, 233, 0.06) 0%,
-    rgba(99, 102, 241, 0.08) 100%
-  );
-  border: 1px solid rgba(14, 165, 233, 0.18);
-  position: relative;
+.reach-cta {
+  background: linear-gradient(135deg, #0ea5e9 0%, #6366f1 100%);
+  background-size: 200% 200%;
+  animation: gradient-shift-cta 6s ease infinite;
 }
-.spotlight-glow::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 1rem;
-  background: radial-gradient(
-    circle at top right,
-    rgba(99, 102, 241, 0.15),
-    transparent 50%
-  );
-  pointer-events: none;
+
+@keyframes gradient-shift-cta {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
 @keyframes spotlight-in {
