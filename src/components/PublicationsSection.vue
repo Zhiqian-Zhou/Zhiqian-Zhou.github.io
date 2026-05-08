@@ -13,7 +13,7 @@ const papers = [
   {
     badge: 'Under Review',
     venue: 'ICML Workshop',
-    title: '',
+    title: ':  for ',
     authorsHtml:
       ', <strong class="text-slate-900">Z. Zhou</strong>, H. Chen, .',
     affiliation: '',
