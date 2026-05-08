@@ -6,7 +6,11 @@ const work = [
     org: 'Polytechnic University of Catalonia',
     icon: 'fa-university',
     filled: true,
-    body: `Building a framework translating natural language descriptions into 3D architectural structures by coupling large language models with graph-based spatial reasoning, using Minecraft as the evaluation testbed.`
+    bullets: [
+      'Translating natural language descriptions into 3D architectural structures.',
+      'Coupling large language models with graph-based spatial reasoning.',
+      'Using Minecraft as the evaluation testbed for generated structures.'
+    ]
   },
   {
     title: 'Research Assistant',
