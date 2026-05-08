@@ -20,9 +20,9 @@ const navItems = [
 
 const languages = [
   { code: 'CN', name: 'Chinese', level: 'Native', highlight: true },
-  { code: 'ES', name: 'Spanish', level: 'Bilingual' },
-  { code: 'CA', name: 'Catalan', level: 'Bilingual' },
-  { code: 'EN', name: 'English', level: 'Pro' }
+  { code: 'ES', name: 'Spanish', level: 'Bil.' },
+  { code: 'CA', name: 'Catalan', level: 'Bil.' },
+  { code: 'EN', name: 'English', level: 'Pro.' }
 ]
 
 const onNav = () => emit('navigate')
@@ -77,25 +77,18 @@ const onNav = () => emit('navigate')
       <div class="spotlight-zone min-h-0 px-3 pt-3 pb-2 flex flex-col justify-end">
         <a
           href="mailto:zhiqianzhou12@gmail.com"
-          class="reach-cta hidden group relative overflow-hidden rounded-2xl px-4 py-3 flex items-center gap-3 text-white shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 hover:-translate-y-0.5 transition-all"
+          class="reach-cta hidden group relative overflow-hidden rounded-xl px-3 py-2.5 items-center gap-2 min-w-0"
         >
           <span
-            class="w-9 h-9 shrink-0 rounded-xl bg-white/20 flex items-center justify-center"
+            class="w-7 h-7 shrink-0 rounded-lg bg-white/10 flex items-center justify-center"
           >
-            <i class="fas fa-paper-plane text-sm"></i>
+            <i class="fas fa-paper-plane text-[11px]"></i>
           </span>
-          <span class="flex-1 min-w-0">
-            <span
-              class="block text-[9px] font-bold uppercase tracking-[0.15em] opacity-80"
-            >
-              Let's talk
-            </span>
-            <span class="block text-[12px] font-semibold truncate">
-              Reach out via email
-            </span>
+          <span class="flex-1 min-w-0 truncate text-[13px] font-semibold tracking-tight">
+            Get in touch
           </span>
           <i
-            class="fas fa-arrow-right text-[10px] opacity-70 transition-transform group-hover:translate-x-1"
+            class="reach-arrow fas fa-arrow-right text-[10px] opacity-70 shrink-0"
           ></i>
         </a>
       </div>
@@ -112,11 +105,11 @@ const onNav = () => emit('navigate')
             Languages
           </h4>
         </div>
-        <div class="grid grid-cols-2 gap-1">
+        <div class="grid grid-cols-2 gap-1 min-w-0">
           <span
             v-for="l in languages"
             :key="l.code"
-            class="lang-pill flex items-center justify-between px-2 py-1 rounded-md text-[10px] font-medium"
+            class="lang-pill flex items-center justify-between gap-1 px-1.5 py-1 rounded-md text-[10px] font-medium min-w-0 overflow-hidden"
             :class="
               l.highlight
                 ? 'bg-primary/10 text-primary'
@@ -124,9 +117,9 @@ const onNav = () => emit('navigate')
             "
             :title="`${l.name} — ${l.level}`"
           >
-            <span class="font-mono font-bold">{{ l.code }}</span>
+            <span class="font-mono font-bold shrink-0">{{ l.code }}</span>
             <span
-              class="text-[9px] opacity-80"
+              class="text-[9px] opacity-80 truncate"
               :class="l.highlight ? 'font-bold' : ''"
               >{{ l.level }}</span
             >
@@ -213,34 +206,67 @@ footer {
   padding-bottom: clamp(0.5rem, 1.2vh, 0.85rem);
 }
 
-/* Spotlight — show only when there's enough vertical room */
+/* "Get in touch" CTA — Linear-style glass chip:
+   solid near-black surface with 1px top-edge specular highlight.
+   Visible only when there's enough vertical room. */
 @media (min-height: 700px) {
   .reach-cta {
     display: flex;
-    animation: spotlight-in 0.6s cubic-bezier(0.32, 0.72, 0, 1) 0.4s both;
+    animation: cta-in 0.6s cubic-bezier(0.32, 0.72, 0, 1) 0.4s both;
   }
 }
 
 .reach-cta {
-  background: linear-gradient(135deg, #0ea5e9 0%, #6366f1 100%);
-  background-size: 200% 200%;
-  animation: gradient-shift-cta 6s ease infinite;
+  color: #f8fafc;
+  background: #0f172a;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 1px 0 rgba(0, 0, 0, 0.6),
+    0 4px 12px -2px rgba(15, 23, 42, 0.25);
+  transition: box-shadow 0.22s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    background 0.22s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.reach-cta:hover {
+  background: #1e293b;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    0 1px 0 rgba(0, 0, 0, 0.6),
+    0 8px 20px -4px rgba(15, 23, 42, 0.35);
 }
 
-@keyframes gradient-shift-cta {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+/* Specular sweep — runs once on hover */
+.reach-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.12) 50%,
+    transparent 60%
+  );
+  transform: translateX(-100%);
+  transition: transform 700ms ease;
+  pointer-events: none;
+}
+.reach-cta:hover::before {
+  transform: translateX(100%);
 }
 
-@keyframes spotlight-in {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Arrow slide */
+.reach-arrow {
+  transition: transform 0.22s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.reach-cta:hover .reach-arrow {
+  transform: translateX(3px);
+  opacity: 1;
+}
+
+@keyframes cta-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 /* Dock buttons */

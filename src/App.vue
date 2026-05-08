@@ -143,9 +143,12 @@ onUnmounted(() => {
       </button>
     </Transition>
 
-    <!-- Main scroll area. At 2xl, equal margins center the content on the viewport.
-         Note: no `w-full` — that would conflict with mr-* and overflow the viewport. -->
-    <main class="lg:ml-44 xl:ml-56 2xl:ml-64 2xl:mr-64 min-h-screen relative">
+    <!-- Main scroll area. Equal left+right margins at every desktop breakpoint
+         so section content visually centers in the viewport, balancing the
+         left sidebar's weight. No `w-full` (would conflict with mr-* and overflow). -->
+    <main
+      class="lg:ml-44 lg:mr-44 xl:ml-56 xl:mr-56 2xl:ml-64 2xl:mr-64 min-h-screen relative"
+    >
       <HeroSection />
       <AboutSection />
       <ExperienceSection />
