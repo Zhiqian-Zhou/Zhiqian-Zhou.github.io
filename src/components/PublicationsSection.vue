@@ -9,16 +9,6 @@ const papers = [
     affiliation: 'Transport Research Arena',
     affilIcon: 'fa-university',
     color: 'primary'
-  },
-  {
-    badge: 'Under Review',
-    venue: 'ICML Workshop',
-    title: ':  for ',
-    authorsHtml:
-      ', <strong class="text-slate-900">Z. Zhou</strong>, H. Chen, .',
-    affiliation: '',
-    affilIcon: 'fa-flask',
-    color: 'secondary'
   }
 ]
 </script>
