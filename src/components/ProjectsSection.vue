@@ -39,6 +39,17 @@ const projects = [
       'Architected an audio classification system that accurately recognizes voice commands. Achieved 96% accuracy by implementing and tuning CNNs and Transformer-based solutions.',
     tags: ['Audio Processing', 'CNNs', 'Transformers'],
     repo: 'https://github.com/C-H-E-N-Zhihao/Voice-command-recognition'
+  },
+  {
+    title: 'Creative.AI',
+    icon: 'fa-wand-magic-sparkles',
+    color: 'amber',
+    award: 'HackUPC 2026 — Smadex Creative Intelligence Challenge',
+    description:
+      'AI assistant for mobile-ad creatives. Built a soft-vote tabular ensemble (XGBoost, LightGBM, CatBoost) for health scoring, fine-tuned SmolVLM for structured strengths/weaknesses analysis, and a Flux LoRA + DPO pipeline that rebuilds creatives. Ships as an offline-capable SPA with 1,076 precomputed predictions and a circle-to-ask coaching interface. Test macro-F1 of 0.677.',
+    tags: ['Vision Models', 'ML Ensemble', 'FastAPI', 'AdTech'],
+    repo: 'https://github.com/xuyaooo/smadex-creative',
+    decor: true
   }
 ]
 
@@ -67,6 +78,12 @@ const colorClass = (color, slot) => {
       border: 'border-rose-500/20',
       text: 'text-rose-500',
       decor: 'bg-rose-500/5'
+    },
+    amber: {
+      bg: 'bg-amber-500/10',
+      border: 'border-amber-500/20',
+      text: 'text-amber-600',
+      decor: 'bg-amber-500/5'
     }
   }
   return map[color]?.[slot] || ''
