@@ -12,7 +12,7 @@ const papers = [
     link: 'https://openreview.net/forum?id=wqful6F0Em'
   },
   {
-    badge: 'Under Review',
+    badge: 'Accepted',
     venue: 'TRA 2026',
     title: 'Bridging Disruptions: AI-Driven Coordination Across Air and Rail Networks',
     authorsHtml:
