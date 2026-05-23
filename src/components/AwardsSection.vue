@@ -15,6 +15,13 @@ const awards = [
       'Won for <strong class="text-slate-800">AIvidence</strong>, a Multi-Agent LLM-based misinformation detection system.'
   },
   {
+    title: '3rd Prize, InterHackBCN',
+    year: '2026',
+    color: 'rose',
+    descHtml:
+      'Won for <strong class="text-slate-800">NextBuy</strong> (Inibsa Challenge), an explainable sales-prioritisation system generating 400 daily commercial alerts from transactional history.'
+  },
+  {
     title: 'Schneider Electric Impact Maker',
     year: '2024',
     color: 'emerald',

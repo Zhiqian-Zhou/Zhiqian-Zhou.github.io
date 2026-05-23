@@ -12,6 +12,17 @@ const projects = [
     decor: true
   },
   {
+    title: 'NextBuy',
+    icon: 'fa-cart-shopping',
+    color: 'rose',
+    award: '3rd Prize, InterHackBCN 2026 — Inibsa Challenge',
+    description:
+      'Intelligent sales-prioritisation system for Inibsa (dental clinic distributor) processing ~14k customer-product combinations. Generates 400 daily commercial alerts ranked by probability, euro impact, and time urgency; LightGBM + XGBoost models with TreeSHAP explanations narrated by Gemini 2.5 Flash. Achieves P@5% > 0.90 on top-priority alerts. FastAPI + MongoDB backend, Vue 3 CRM-style frontend.',
+    tags: ['LightGBM', 'XGBoost', 'SHAP', 'Gemini', 'FastAPI', 'Vue 3'],
+    repo: 'https://devpost.com/software/nextbuy',
+    decor: true
+  },
+  {
     title: 'AImSafe',
     icon: 'fa-shield-alt',
     color: 'primary',
