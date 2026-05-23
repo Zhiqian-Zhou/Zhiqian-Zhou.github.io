@@ -1,28 +1,6 @@
 <script setup>
 const projects = [
   {
-    title: 'Creative.AI',
-    icon: 'fa-wand-magic-sparkles',
-    color: 'amber',
-    event: 'HackUPC 2026 — Smadex Creative Intelligence Challenge',
-    description:
-      'AI assistant for mobile-ad creatives. Built a soft-vote tabular ensemble (XGBoost, LightGBM, CatBoost) for health scoring, fine-tuned SmolVLM for structured strengths/weaknesses analysis, and a Flux LoRA + DPO pipeline that rebuilds creatives. Ships as an offline-capable SPA with 1,076 precomputed predictions and a circle-to-ask coaching interface. Test macro-F1 of 0.677.',
-    tags: ['Vision Models', 'ML Ensemble', 'FastAPI', 'AdTech'],
-    repo: 'https://github.com/xuyaooo/smadex-creative',
-    decor: true
-  },
-  {
-    title: 'NextBuy',
-    icon: 'fa-cart-shopping',
-    color: 'rose',
-    award: '3rd Prize, InterHackBCN 2026 — Inibsa Challenge',
-    description:
-      'Intelligent sales-prioritisation system for Inibsa (dental clinic distributor) processing ~14k customer-product combinations. Generates 400 daily commercial alerts ranked by probability, euro impact, and time urgency; LightGBM + XGBoost models with TreeSHAP explanations narrated by Gemini 2.5 Flash. Achieves P@5% > 0.90 on top-priority alerts. FastAPI + MongoDB backend, Vue 3 CRM-style frontend.',
-    tags: ['LightGBM', 'XGBoost', 'SHAP', 'Gemini', 'FastAPI', 'Vue 3'],
-    repo: 'https://devpost.com/software/nextbuy',
-    decor: true
-  },
-  {
     title: 'AImSafe',
     icon: 'fa-shield-alt',
     color: 'primary',
@@ -42,6 +20,28 @@ const projects = [
       'Multi-Agent Misinformation Hunter. Designed a four-agent pipeline using LLMs and RAG to detect misinformation through automated fact-checking and credibility scoring, complete with transparent and interpretable reasoning logs.',
     tags: ['RAG', 'Multi-Agent', 'Fact-Checking'],
     repo: 'https://github.com/ChenghengLi/AIvidence',
+    decor: true
+  },
+  {
+    title: 'NextBuy',
+    icon: 'fa-cart-shopping',
+    color: 'rose',
+    award: '3rd Prize, InterHackBCN 2026 — Inibsa Challenge',
+    description:
+      'Intelligent sales-prioritisation system for Inibsa (dental clinic distributor) processing ~14k customer-product combinations. Generates 400 daily commercial alerts ranked by probability, euro impact, and time urgency; LightGBM + XGBoost models with TreeSHAP explanations narrated by Gemini 2.5 Flash. Achieves P@5% > 0.90 on top-priority alerts. FastAPI + MongoDB backend, Vue 3 CRM-style frontend.',
+    tags: ['LightGBM', 'XGBoost', 'SHAP', 'Gemini', 'FastAPI', 'Vue 3'],
+    repo: 'https://devpost.com/software/nextbuy',
+    decor: true
+  },
+  {
+    title: 'Creative.AI',
+    icon: 'fa-wand-magic-sparkles',
+    color: 'amber',
+    event: 'HackUPC 2026 — Smadex Creative Intelligence Challenge',
+    description:
+      'AI assistant for mobile-ad creatives. Built a soft-vote tabular ensemble (XGBoost, LightGBM, CatBoost) for health scoring, fine-tuned SmolVLM for structured strengths/weaknesses analysis, and a Flux LoRA + DPO pipeline that rebuilds creatives. Ships as an offline-capable SPA with 1,076 precomputed predictions and a circle-to-ask coaching interface. Test macro-F1 of 0.677.',
+    tags: ['Vision Models', 'ML Ensemble', 'FastAPI', 'AdTech'],
+    repo: 'https://github.com/xuyaooo/smadex-creative',
     decor: true
   },
   {
