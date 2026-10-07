@@ -1,51 +1,34 @@
-# Zhiqian Zhou — Personal Site
+# zhiqian-zhou.github.io
 
-Vue 3 + Vite + Tailwind CSS portfolio site, ported from a single-file HTML template into componentized Vue.
+Personal site — Vue 3 + Vite + Tailwind. Single page in academic order: About · Research · Projects · Education · Awards · Skills · CV. Each fact lives in exactly one section.
 
-## Stack
+## Editing content
+All text lives in `src/data/profile.js`. The CV served by the site is `public/ZhiqianZhou_CV.pdf`.
 
-- Vue 3 (`<script setup>`, Composition API)
-- Vite 6
-- Tailwind CSS 3
-- AOS (animate on scroll)
-- Font Awesome 6 + Google Fonts via CDN
-
-## Setup
+## Images
+Source photos (Unsplash + portrait) are in `scripts/src-images/`. Regenerate the graded WebP files in `public/img/` with:
 
 ```bash
-npm install
-npm run dev
+node scripts/images.mjs
 ```
 
-Then open the URL Vite prints (defaults to http://localhost:5173).
-
-## Add your photo
-
-Drop a square image at `public/profile.jpg`. It will appear in the hero section automatically. If absent, the page falls back to a placeholder.
-
-## Build
-
+## Develop / deploy
 ```bash
-npm run build
-npm run preview
+npm install
+npm run dev       # local dev server
+npm run build     # production build into dist/
+npm run deploy    # build + force-push dist/ to the gh-pages branch
 ```
 
 ## Structure
-
 ```
 src/
-  main.js               # Vue + AOS bootstrap
-  App.vue               # Layout (sidebar + main scroll area, scroll-spy)
-  assets/main.css       # Tailwind layers + glass/gradient utilities
+  App.vue                 shell: sidebar, mobile top bar, sections
+  data/profile.js         all content
+  composables/            useScrollSpy, asset()
   components/
-    AppSidebar.vue      # Fixed left nav, contacts, languages
-    HeroSection.vue
-    AboutSection.vue
-    ExperienceSection.vue   # Timeline (data-driven)
-    ProjectsSection.vue     # Project cards (data-driven)
-    PublicationsSection.vue
-    SkillsSection.vue       # Skill groups (data-driven)
-    AwardsSection.vue       # Award cards (data-driven)
-    LeadershipSection.vue
-    AppFooter.vue
+    layout/               AppSidebar, MobileTopBar, QuoteBand, AppFooter
+    sections/             About, Research, Projects, Education, Awards, Skills
+    ui/                   PageSection, ProjectRow, ProjectThumb, PublicationCard, TimelineItem, SocialLinks
+    sketches/             hand-drawn SVG doodles
 ```
