@@ -14,8 +14,8 @@ const fade = Buffer.from(`<svg width="1200" height="140"><defs><linearGradient i
 const text = Buffer.from(`<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
   <text x="80" y="150" font-family="Menlo, monospace" font-size="20" letter-spacing="4" fill="#3B5B8C">M.S. DATA SCIENCE · EPFL</text>
   <text x="76" y="255" font-family="Georgia, serif" font-size="92" fill="#1A1D23">Zhiqian Zhou</text>
-  <text x="80" y="320" font-family="Georgia, serif" font-style="italic" font-size="28" fill="#3A3F47">Machine Learning · LLM Agents &amp; RAG</text>
-  <text x="80" y="356" font-family="Georgia, serif" font-style="italic" font-size="28" fill="#3A3F47">Multimodal Models</text>
+  <text x="80" y="320" font-family="Georgia, serif" font-style="italic" font-size="28" fill="#3A3F47">Multi-Agent LLM Systems · RAG</text>
+  <text x="80" y="356" font-family="Georgia, serif" font-style="italic" font-size="28" fill="#3A3F47">Machine Learning · Data Analysis</text>
   <rect x="80" y="386" width="60" height="2" fill="#3B5B8C"/>
   <text x="80" y="430" font-family="Menlo, monospace" font-size="20" fill="#5F6670">Open to ML / Data Science internships</text>
 </svg>`)

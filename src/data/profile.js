@@ -13,12 +13,12 @@ export const person = {
   monogram: 'ZZ',
   name: 'Zhiqian Zhou',
   greeting: 'Hello, I’m',
-  roles: ['Machine Learning', 'LLM Agents & RAG', 'Multimodal Models'],
+  roles: ['Multi-Agent LLM Systems', 'RAG', 'Machine Learning', 'Data Analysis'],
   location: 'Lausanne, Switzerland',
   email: 'zhiqian.zhou@epfl.ch',
   handNote: ['Learn', 'Build', 'Explore'],
   bio: [
-    'I’m a first-year M.S. student in Data Science at EPFL, after a B.S. in Artificial Intelligence at UPC BarcelonaTech (GPA 9/10, top 3%). My research interest is making small language and vision-language models work well under limited compute — from GUI grounding (WinDOM, ICML 2026 workshop) to structured LLM outputs and multi-agent pipelines. I also enjoy building ML systems end to end in Python and PyTorch, from raw data to a working demo.'
+    'I’m a first-year M.S. student in Data Science at EPFL, after a B.S. in Artificial Intelligence at UPC BarcelonaTech (GPA 9/10, top 3%). My research interests are LLM multi-agent systems, retrieval-augmented generation (RAG), machine learning, and data analysis. I co-authored an ICML 2026 workshop paper (WinDOM) and enjoy building ML systems end to end in Python, from raw data to a working demo.'
   ]
 }
 
@@ -49,7 +49,7 @@ export const publications = [
     venue: 'ICML 2026 Second Workshop on Agents in the Wild: Safety, Security, and Beyond',
     type: 'Workshop paper',
     tldr:
-      'A 54k-sample GUI grounding corpus with bounding boxes read directly from the DOM of a Windows 11 web reimplementation, plus a teacher-free recipe (self-family distillation followed by GRPO) that improves a 2B model by +5.4 points out-of-distribution on average across ScreenSpot-Pro, OSWorld-G and ScreenSpot-V2.',
+      'A 54K-sample, annotation-free GUI grounding corpus; self-family distillation followed by GRPO lifts a Qwen3.5-2B agent by +5.4 points on the out-of-distribution mean (ScreenSpot-Pro, OSWorld-G, ScreenSpot-V2).',
     bibtex: `@article{chen2026windom,
   title   = {WinDOM: Self-Family Distillation for Small-Model GUI Grounding},
   author  = {Chen, Chengheng Li and Zhou, Zhiqian and Chen, Hao and Chauvin, Nicolas},
@@ -80,11 +80,11 @@ export const researchExperience = [
     title: 'Bachelor’s Thesis — HomeCraft: Text-to-Building Generation in a Voxel World',
     org: 'UPC BarcelonaTech',
     period: 'Feb 2026 – Jun 2026',
-    note: 'Advisor: Prof. Ramon Sangüesa',
+    note: 'Grade 10/10 · Advisor: Prof. Ramon Sangüesa',
     bullets: [
-      'Built a multi-agent LLM pipeline that turns one text prompt into a complete voxel building.',
-      'Benchmarked open-weight LLMs with confidence intervals and significance tests.',
-      'Fine-tuned a small distilled model for efficient generation.'
+      'Built a 6-agent LLM cascade with RAG (2.7K buildings) and 316 executable skills that turns one prompt into a furnished building.',
+      'Benchmarked 5 open-weight LLMs on 50 prompts with an 18-check evaluator validated by 13 human raters (r = 0.84); best composite score 0.86.',
+      'Distilled into 2 small Gemma students (QLoRA): no quality gain, which identified task completion as the bottleneck.'
     ],
     links: [{ label: 'code', title: 'HomeCraft thesis code on GitHub', href: 'https://github.com/Zhiqian-Zhou/HomeCraft_tfg' }]
   }
@@ -96,10 +96,11 @@ export const projects = [
     title: 'AImSafe',
     subtitle: 'Worker Safety Monitoring',
     description:
-      'A real-time, privacy-preserving computer vision system that tracks up to five workers, detects fatigue (PERCLOS, gaze drift), unsafe lifting postures, and collision risk, and fuses these signals into a REBA safety score. An LLM agent gives natural-language safety coaching and sends MQTT commands to equipment during critical hazards.',
+      'A real-time (~30 FPS), privacy-preserving system that tracks up to five workers and fuses posture, fatigue, and collision risks into a 0–100 safety score, with LLM coaching and MQTT machine stops.',
+    role: 'Built the posture and fatigue modules on MediaPipe landmarks: joint-angle unsafe-lift detection, REBA scoring, and drowsiness detection via adaptive EAR, PERCLOS, microsleeps, yawns, and gaze.',
     year: 2026,
     award: '1st Prize · MERIThON UPC',
-    tags: ['Python', 'OpenCV', 'MediaPipe', 'LLM agent', 'MQTT'],
+    tags: ['Python', 'MediaPipe', 'OpenCV', 'NumPy', 'LLM agent', 'MQTT'],
     links: [{ label: 'code', href: 'https://github.com/ChenghengLi/AImSafe-Public' }]
   },
   {
@@ -107,10 +108,11 @@ export const projects = [
     title: 'AIvidence',
     subtitle: 'Multi-Agent Misinformation Hunter',
     description:
-      'A four-agent LLM + RAG pipeline for algorithmic fact-checking and source credibility scoring, with transparent reasoning logs so that every verdict can be audited.',
+      'A multi-agent LLM system that checks online content and returns weighted credibility scores with transparent reasoning.',
+    role: 'Co-designed the multi-agent workflow: three LLM agents for domain analysis, claim extraction, and web-search verification that together yield weighted credibility scores.',
     year: 2025,
     award: '1st Prize · MERIThON UPC',
-    tags: ['LLM', 'RAG', 'LangChain', 'Python'],
+    tags: ['LangChain', 'Multi-agent', 'Web search', 'Python'],
     links: [{ label: 'code', href: 'https://github.com/ChenghengLi/AIvidence' }]
   },
   {
@@ -118,10 +120,11 @@ export const projects = [
     title: 'NextBuy',
     subtitle: 'Smart Demand Signals for Inibsa',
     description:
-      'A B2B alert system for dental clinics that flags churn risks and growth opportunities: LightGBM + XGBoost models (Precision@5% > 0.90) produce daily alerts prioritized by impact, and Gemini turns TreeSHAP explanations into sales actions.',
+      'A B2B alert system that flags churn risks and growth opportunities across dental clinics, with SHAP explanations turned into sales actions by Gemini.',
+    role: 'Did feature engineering and data analysis on clinic sales history, co-trained 90-day purchase/churn models (temporal holdout: LightGBM AUC 0.87, P@5% 0.95; XGBoost AUC 0.81), and analyzed SHAP drivers.',
     year: 2026,
     award: '3rd Prize · INTERHACK BCN',
-    tags: ['Python', 'LightGBM', 'XGBoost', 'SHAP', 'Gemini'],
+    tags: ['LightGBM', 'XGBoost', 'SHAP', 'Gemini', 'FastAPI'],
     links: [{ label: 'code', href: 'https://github.com/ChenghengLi/NextBuy' }]
   },
   {
@@ -129,10 +132,11 @@ export const projects = [
     title: 'ADDAD',
     subtitle: 'Smadex Creative Intelligence',
     description:
-      'A low-latency system for the Smadex challenge: a soft-voting ensemble (XGBoost, CatBoost, LightGBM; test macro-F1 0.677) gives ad creatives a health score, a fine-tuned SmolVLM writes structured JSON critiques, and a Flux LoRA + DPO pipeline generates visual rebuilds from a single screenshot.',
+      'A low-latency system that scores mobile-ad creatives from a single screenshot; the team also fine-tuned SmolVLM for JSON critiques and Flux LoRA/DPO for visual rebuilds.',
+    role: 'Did feature extraction and dataset analysis on 1,076 ad creatives, co-trained a soft-voting ensemble (XGBoost, LightGBM, CatBoost), and analyzed results: test macro-F1 0.677, AUC 0.94/0.98 for top/under-performers, ECE 0.096.',
     year: 2026,
     event: 'HackUPC',
-    tags: ['XGBoost', 'CatBoost', 'LightGBM', 'SmolVLM', 'Diffusion'],
+    tags: ['XGBoost', 'LightGBM', 'CatBoost', 'SmolVLM'],
     links: [{ label: 'code', href: 'https://github.com/xuyaooo/smadex-creative' }]
   },
   {
@@ -140,9 +144,10 @@ export const projects = [
     title: 'CUPME',
     subtitle: 'Enterprise RAG Chatbot for Siemens Energy',
     description:
-      'A retrieval-augmented chatbot over Siemens Energy’s technical documentation that grounds its answers in retrieved passages to minimize hallucinations.',
+      'A RAG chatbot over Siemens Energy technical documentation that answers in four languages through LLM query translation.',
+    role: 'Built the RAG architecture (bge-small embeddings in Pinecone, Gemini 1.5 Flash) and the backend–frontend interaction, including chat-history management.',
     year: 2024,
-    tags: ['RAG', 'LangChain', 'FastAPI'],
+    tags: ['LangChain', 'Pinecone', 'RAG', 'FastAPI'],
     links: [{ label: 'code', href: 'https://github.com/randreu27/Chatbot-Ultra-Pro-Max-Energy-CUPME' }]
   }
 ]
@@ -158,11 +163,9 @@ export const education = [
     title: 'Exchange Semester in AI',
     org: 'Beihang University (BUAA), Beijing',
     period: 'Sep 2025 – Jan 2026',
-    note: 'GPA 96/100 · Coursework: Foundation Models, Intelligent Security, Medical Image Computing, Digital Image and Video Processing',
+    note: 'GPA 96/100 · Coursework: Foundation Models, Intelligent Security, Medical Imaging',
     bullets: [
-      'Benchmarked ResNet-50 vs. DeiT-Small on HAM10000: DeiT-Small had higher accuracy, but ResNet-50 led by 0.025 macro-F1 on rare lesions.',
-      'Built a multimodal fusion model for fetal ultrasound analysis.',
-      'Evaluated the adversarial robustness of deep models under FGSM and PGD attacks.'
+      'On HAM10000, ResNet-50 beat DeiT-Small by 0.025 macro-F1 on rare lesions.'
     ]
   },
   {

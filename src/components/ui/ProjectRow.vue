@@ -18,6 +18,9 @@ defineProps({ project: { type: Object, required: true } })
         {{ project.year }}<template v-if="project.award || project.event"> · {{ project.award || project.event }}</template>
       </p>
       <p class="mt-2 text-[14.5px] leading-relaxed text-ink-2 max-w-prose">{{ project.description }}</p>
+      <p v-if="project.role" class="mt-2 text-[14.5px] leading-relaxed text-ink max-w-prose">
+        <span class="font-mono text-[11px] uppercase tracking-[0.12em] text-accent mr-1.5">My part</span>{{ project.role }}
+      </p>
       <div class="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2">
         <ul class="flex flex-wrap gap-1.5">
           <li v-for="t in project.tags" :key="t" class="pill">{{ t }}</li>
