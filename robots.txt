@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://zhiqian-zhou.github.io/sitemap.xml
